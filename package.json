@@ -4,9 +4,30 @@
   "description": "This project was carried out as part of the node js course at a RS School. Task - Remote Control",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./src/index.ts"
   },
-  "keywords": ["websocket", "ws", "remote-control", "remote"],
+  "keywords": [
+    "websocket",
+    "ws",
+    "remote-control",
+    "remote"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@nut-tree/nut-js": "^3.0.0",
+    "dotenv": "^16.0.3",
+    "ws": "^8.12.0"
+  }
 }
