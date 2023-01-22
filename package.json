@@ -12,7 +12,7 @@
     "remote-control",
     "remote"
   ],
-  "author": "",
+  "author": "Likvidas <bobento@yandex.ru>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.18",

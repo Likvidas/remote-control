@@ -1,5 +1,8 @@
-import { sayHello } from './modules/sayHello';
+import 'dotenv/config';
+import { env } from 'process';
+import { httpServer } from './http_server';
 
-console.log('Started Index file');
+const HTTP_PORT = Number(env.HTTP_PORT) ?? 8181;
 
-sayHello();
+console.log(`Start static http server on the ${HTTP_PORT} port!`);
+httpServer.listen(HTTP_PORT);
