@@ -12,24 +12,36 @@ export const handleWsConnection = async (ws: WebSocket) => {
     const [command, mainValue] = chunk.toString().split(' ');
 
     switch (command) {
-      case Commands.MouseUp:
+      case Commands.MouseUp: {
         await mouse.move(up(Number(mainValue)));
         wsStream.write(`${command}_${mainValue}`);
         break;
-      case Commands.MouseDown:
+      }
+      case Commands.MouseDown: {
         await mouse.move(down(Number(mainValue)));
         wsStream.write(`${command}_${mainValue}`);
         break;
-      case Commands.MouseLeft:
+      }
+      case Commands.MouseLeft: {
         await mouse.move(left(Number(mainValue)));
         wsStream.write(`${command}_${mainValue}`);
         break;
-      case Commands.MouseRight:
+      }
+      case Commands.MouseRight: {
         await mouse.move(right(Number(mainValue)));
         wsStream.write(`${command}_${mainValue}`);
         break;
-      default:
+      }
+      case Commands.MousePosition: {
+        const { x, y } = await mouse.getPosition();
+        wsStream.write(`${command} ${x}, ${y}`);
         break;
+      }
+      default: {
+        console.log(`Command - ${command} not found`);
+        wsStream.write(`Command - ${command} not found`);
+        break;
+      }
     }
   });
 };

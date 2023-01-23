@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { env } from 'process';
-import { httpServer } from './http_server';
-import { wsServer } from './ws_server';
+import { httpServer } from './http-server';
+import { wsServer } from './ws-server';
 
 const HTTP_PORT = Number(env.HTTP_PORT) ?? 8181;
 const WS_PORT = Number(env.WS_PORT) ?? 8080;
