@@ -35,7 +35,7 @@ export const handleWsConnection = async (ws: WebSocket) => {
       }
       case Commands.MousePosition: {
         const { x, y } = await mouse.getPosition();
-        wsStream.write(`${command} ${x}, ${y}`);
+        wsStream.write(`${command} ${x},${y}`);
         break;
       }
       case Commands.DrawCircle: {
