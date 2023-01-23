@@ -1,6 +1,7 @@
 import { WebSocket, createWebSocketStream } from 'ws';
 import { mouse, up, down, left, right } from '@nut-tree/nut-js';
 import { Commands } from './handler-connection.types';
+import { drawCircle } from '../utils/draw-circle';
 
 export const handleWsConnection = async (ws: WebSocket) => {
   const wsStream = createWebSocketStream(ws, {
@@ -35,6 +36,16 @@ export const handleWsConnection = async (ws: WebSocket) => {
       case Commands.MousePosition: {
         const { x, y } = await mouse.getPosition();
         wsStream.write(`${command} ${x}, ${y}`);
+        break;
+      }
+      case Commands.DrawCircle: {
+        drawCircle(Number(mainValue));
+        wsStream.write(`${command}_${mainValue}`);
+        break;
+      }
+      case Commands.DrawRectangle: {
+        drawCircle(Number(mainValue));
+        wsStream.write(`${command}_${mainValue}`);
         break;
       }
       default: {
