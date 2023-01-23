@@ -1,7 +1,7 @@
 import { WebSocket, createWebSocketStream } from 'ws';
 import { mouse, up, down, left, right } from '@nut-tree/nut-js';
 import { Commands } from './handler-connection.types';
-import { drawCircle, drawRectangle } from '../utils';
+import { drawCircle, drawRectangle, getScreenShot } from '../utils';
 
 export const handleWsConnection = async (ws: WebSocket) => {
   const wsStream = createWebSocketStream(ws, {
@@ -51,6 +51,11 @@ export const handleWsConnection = async (ws: WebSocket) => {
       case Commands.DrawSquare: {
         drawRectangle(Number(mainValue));
         wsStream.write(`${command}_${mainValue}`);
+        break;
+      }
+      case Commands.PrintScreen: {
+        const screenShot = await getScreenShot();
+        wsStream.write(`${command} ${screenShot}`);
         break;
       }
       default: {
