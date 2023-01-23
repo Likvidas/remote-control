@@ -1,5 +1,5 @@
 import { WebSocketServer } from 'ws';
-import * as process from 'process';
+import process from 'process';
 import { handleWsConnection } from './handlers/handler-connection';
 
 export const wsServer = (port: number) => {

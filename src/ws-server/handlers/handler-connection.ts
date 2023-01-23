@@ -64,5 +64,6 @@ export const handleWsConnection = async (ws: WebSocket) => {
         break;
       }
     }
+    console.log(`Received: ${chunk.toString()}`);
   });
 };
